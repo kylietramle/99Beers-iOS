@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "61F7887F1DA996F200B82110"
-               BuildableName = "99Beers.app"
-               BlueprintName = "99Beers"
-               ReferencedContainer = "container:99Beers.xcodeproj">
+               BlueprintIdentifier = "454C0238A18DF054130F6BB8FAF68D2F"
+               BuildableName = "Pods_99Beers.framework"
+               BlueprintName = "Pods-99Beers"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "61F7887F1DA996F200B82110"
-            BuildableName = "99Beers.app"
-            BlueprintName = "99Beers"
-            ReferencedContainer = "container:99Beers.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "61F7887F1DA996F200B82110"
-            BuildableName = "99Beers.app"
-            BlueprintName = "99Beers"
-            ReferencedContainer = "container:99Beers.xcodeproj">
+            BlueprintIdentifier = "454C0238A18DF054130F6BB8FAF68D2F"
+            BuildableName = "Pods_99Beers.framework"
+            BlueprintName = "Pods-99Beers"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "61F7887F1DA996F200B82110"
-            BuildableName = "99Beers.app"
-            BlueprintName = "99Beers"
-            ReferencedContainer = "container:99Beers.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

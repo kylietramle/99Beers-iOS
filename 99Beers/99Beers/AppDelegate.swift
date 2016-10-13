@@ -15,13 +15,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //Search bar button
+        let searchNavigationController = storyboard.instantiateViewControllerWithIdentifier("SearchNavigationController") as! UINavigationController
+        searchNavigationController.tabBarItem.title = "Search"
+        searchNavigationController.tabBarItem.image = UIImage(named: "search")
+        
+        //Bar feed bar button
+        let barFeedNavigationController = storyboard.instantiateViewControllerWithIdentifier("BarFeedNavigationController") as! UINavigationController
+        barFeedNavigationController.tabBarItem.title = "Bar Feed"
+        barFeedNavigationController.tabBarItem.image = UIImage(named: "barfeed")
+        
+        //Trophy wall bar button
+        let trophyWallNavigationController = storyboard.instantiateViewControllerWithIdentifier("TrophyWallNavigationController") as! UINavigationController
+        trophyWallNavigationController.tabBarItem.title = "Trophy Wall"
+        trophyWallNavigationController.tabBarItem.image = UIImage(named: "trophy wall")
+
+        //Account bar button
+        let accountNavigationController = storyboard.instantiateViewControllerWithIdentifier("AccountNavigationController") as! UINavigationController
+        accountNavigationController.tabBarItem.title = "Account"
+        accountNavigationController.tabBarItem.image = UIImage(named: "search")
+        
+        //setup tabbar controller - add tab bar buttons
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [searchNavigationController, barFeedNavigationController, trophyWallNavigationController, accountNavigationController]
+        UITabBar.appearance().tintColor = UIColor.redColor()
+        UITabBar.appearance().barTintColor = UIColor.blackColor()
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+       
     }
 
     func applicationDidEnterBackground(application: UIApplication) {

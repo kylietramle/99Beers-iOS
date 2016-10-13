@@ -12,6 +12,7 @@
 		61F788891DA996F300B82110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F788871DA996F300B82110 /* Main.storyboard */; };
 		61F7888B1DA996F300B82110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61F7888A1DA996F300B82110 /* Assets.xcassets */; };
 		61F7888E1DA996F300B82110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F7888C1DA996F300B82110 /* LaunchScreen.storyboard */; };
+		61F788961DA9A4EF00B82110 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F788951DA9A4EF00B82110 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		61F7888A1DA996F300B82110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61F7888D1DA996F300B82110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61F7888F1DA996F300B82110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61F788951DA9A4EF00B82110 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				61F7888A1DA996F300B82110 /* Assets.xcassets */,
 				61F7888C1DA996F300B82110 /* LaunchScreen.storyboard */,
 				61F7888F1DA996F300B82110 /* Info.plist */,
+				61F788951DA9A4EF00B82110 /* SearchViewController.swift */,
 			);
 			path = 99Beers;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F788961DA9A4EF00B82110 /* SearchViewController.swift in Sources */,
 				61F788861DA996F200B82110 /* ViewController.swift in Sources */,
 				61F788841DA996F200B82110 /* AppDelegate.swift in Sources */,
 			);
@@ -253,6 +257,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylietle.-9Beers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -264,6 +269,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylietle.-9Beers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -286,6 +292,7 @@
 				61F788941DA996F300B82110 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

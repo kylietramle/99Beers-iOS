@@ -7,29 +7,50 @@
 //
 
 import UIKit
+import Alamofire
 
-class SearchViewController: UIViewController {
 
+let clientID = valueForAPIKey(keyname: "CLIENT_ID")
+let clientKey = valueForAPIKey(keyname: "CLIENT_KEY")
+
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var searchResultTableView: UITableView!
+    
+    var beers = [Beer]? = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        searchResultTableView.delegate = self
+        searchResultTableView.dataSource = self
+        
+        makeAPICall()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
     }
-    */
-
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+    }
+    
+    func makeAPICall() {
+        Alamofire.request(.GET, "https://api.untappd.com/v4/method_name?client_id=\(clientID)&client_secret=\(clientKey)").responseJSON { response in
+            if let json = response.result.value {
+                if let status_code = json["status_code"] as? Int {
+                    print("ERROR: Unable to hit the API with status code: \(status_code)")
+                    print("Got status message: \(json["status_message"] as! String)")
+                }
+                else {
+                    print("Connection to API successful!")
+                    self.movies = Movie.movies((json["results"] as? [NSDictionary])!)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
 }

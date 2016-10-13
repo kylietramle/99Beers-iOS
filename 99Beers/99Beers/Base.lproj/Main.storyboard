@@ -201,6 +201,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search Bar" id="0mm-It-bdR"/>
+                    <connections>
+                        <outlet property="searchResultTableView" destination="4H4-F6-sFb" id="37Y-Ug-Aky"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6X-vE-G5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -239,7 +242,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SearchNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="5Gh-ag-gCZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9eB-Lo-oFL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9eB-Lo-oFL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -257,7 +260,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TrophyWallNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="kWR-wN-KMF" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fUa-fC-GyU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fUa-fC-GyU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -275,7 +278,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AccountNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="igP-gp-cpD" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9bw-5A-VKd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9bw-5A-VKd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

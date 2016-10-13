@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		61552C6E1DB0201E002CCE29 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 61552C6D1DB0201E002CCE29 /* .gitignore */; };
 		61552C761DB02441002CCE29 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61552C751DB02441002CCE29 /* ApiKeys.plist */; };
+		61552C7A1DB0365F002CCE29 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61552C791DB0365F002CCE29 /* ApiKeys.swift */; };
 		61F788841DA996F200B82110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F788831DA996F200B82110 /* AppDelegate.swift */; };
-		61F788861DA996F200B82110 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F788851DA996F200B82110 /* ViewController.swift */; };
 		61F788891DA996F300B82110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F788871DA996F300B82110 /* Main.storyboard */; };
 		61F7888B1DA996F300B82110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61F7888A1DA996F300B82110 /* Assets.xcassets */; };
 		61F7888E1DA996F300B82110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F7888C1DA996F300B82110 /* LaunchScreen.storyboard */; };
@@ -23,9 +23,9 @@
 		45327F730D5095F4555B479C /* Pods_99Beers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_99Beers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61552C6D1DB0201E002CCE29 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		61552C751DB02441002CCE29 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		61552C791DB0365F002CCE29 /* ApiKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		61F788801DA996F200B82110 /* 99Beers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 99Beers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F788831DA996F200B82110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		61F788851DA996F200B82110 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		61F788881DA996F300B82110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		61F7888A1DA996F300B82110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61F7888D1DA996F300B82110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				61F788831DA996F200B82110 /* AppDelegate.swift */,
-				61F788851DA996F200B82110 /* ViewController.swift */,
 				61F788871DA996F300B82110 /* Main.storyboard */,
 				61552C6D1DB0201E002CCE29 /* .gitignore */,
 				61F7888A1DA996F300B82110 /* Assets.xcassets */,
@@ -84,6 +83,7 @@
 				61F7888F1DA996F300B82110 /* Info.plist */,
 				61F788951DA9A4EF00B82110 /* SearchViewController.swift */,
 				61552C751DB02441002CCE29 /* ApiKeys.plist */,
+				61552C791DB0365F002CCE29 /* ApiKeys.swift */,
 			);
 			path = 99Beers;
 			sourceTree = "<group>";
@@ -222,8 +222,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				61F788961DA9A4EF00B82110 /* SearchViewController.swift in Sources */,
-				61F788861DA996F200B82110 /* ViewController.swift in Sources */,
 				61F788841DA996F200B82110 /* AppDelegate.swift in Sources */,
+				61552C7A1DB0365F002CCE29 /* ApiKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

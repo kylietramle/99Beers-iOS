@@ -10,4 +10,4 @@ Open to suggestions and feedback.
 
 ## Resources
 
-- [Untappd API]()
+- [Untappd API](https://untappd.com/api/docs)

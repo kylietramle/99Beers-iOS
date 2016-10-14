@@ -34,22 +34,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = searchResultTableView.dequeueReusableCellWithIdentifier(<#T##identifier: String##String#>, forIndexPath: indexPath)
+        let cell = searchResultTableView.dequeueReusableCellWithIdentifier("BeerResultCell", forIndexPath: indexPath)
+        
+        return cell
         
     }
     
     func makeAPICall() {
         Alamofire.request(.GET, "https://api.untappd.com/v4/beer/info/16630?client_id=\(clientID)&client_secret=\(clientKey)").responseJSON { response in
             if let json = response.result.value {
-                if let status_code = json["code"] as? Int {
-                    print("ERROR: Unable to hit the API with status code: \(status_code)")
-                    print("Got status message: \(json["status_message"] as! String)")
-                }
-                else {
-                    print("Connection to API successful!")
-//                    self.beers = Beer.beers((json["results"] as? [NSDictionary])!)
-//                    self.tableView.reloadData()
-                }
+                print (json["meta"]!!["code"])
+                print (json["response"])
             }
         }
     }

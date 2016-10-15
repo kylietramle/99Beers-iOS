@@ -17,7 +17,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var searchResultTableView: UITableView!
     
-    var beers = [Beer]? = []
+    var beers = [Beer] as? NSMutableArray
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +44,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         Alamofire.request(.GET, "https://api.untappd.com/v4/beer/info/16630?client_id=\(clientID)&client_secret=\(clientKey)").responseJSON { response in
             if let json = response.result.value {
                 print ("Connection to API successful!")
-                print (json["response"]["beer"]["items"])
-//                self.beers = Beer.convertBeers((json["response"]["beer"]["items"] as? [NSDictionary])!)
-//                self.tableView.reloadData()
+                self.beers = Beer.convertBeers((json["response"]["beer"] as? [NSDictionary])!)
+                self.searchResultTableView.reloadData()
             }
         }
     }

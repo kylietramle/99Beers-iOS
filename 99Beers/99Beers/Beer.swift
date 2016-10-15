@@ -9,42 +9,57 @@
 import Foundation
 import RealmSwift
 
-let baseLogoUrl = "https://untappd.akamaized.net/site/beer_logos"
-
 class Beer: Object {
     
-//    dynamic var beerName: String? = nil
-//    dynamic var beerLogo: NSURL? = nil
-//    dynamic var beerStyle: String? = nil
-//    var abv: Float? = nil
-//    var ibu: Float? = nil
-//    dynamic var brewery: String? = nil
-//    dynamic var beerDescription: String? = nil
-//    
-//    // initialize Beer instance
-//    class func newBeer(beerDictionary: NSDictionary) -> Beer {
-//        
-//        let beer = Beer()
-//        
-//        beer.beerName =
-//        
-//        if let beerLogo = beerDictionary["poster_path"] as? String {
-//        } else {
-//            beer.beerLogo = nil
-//        }
-//        
-//        beer.beerStyle = beerDictionary["title"] as? String
-//        
-//        beer.abv = beerDictionary["overview"] as? Float
-//        
-//        beer.ibu = beerDictionary["overview"] as? Float
-//        
-//        beer.brewery = beerDictionary["overview"] as? String
-//        
-//        beer.beerDescription = beerDictionary["overview"] as? String
-//        
-//        return beer
-//    }
+    var beerName: String? = nil
+    var beerLogo: NSURL? = nil
+    var beerStyle: String? = nil
+    var abv: Float? = nil
+    var ibu: Float? = nil
+    var brewery: String? = nil
+    var beerDescription: String? = nil
     
+    // initialize Beer instance
+    class func newBeer(beerDictionary: NSDictionary) -> Beer {
+        
+        let beer = Beer()
+        
+        beer.beerName = beerDictionary["beer"]!["beer_name"]
+        print(beer.beerName)
+        
+        if let beerLogo = beerDictionary["beer"]["beer_label"] as? NSURL {
+        } else {
+            beer.beerLogo = nil
+        }
+        
+        beer.beerStyle = beerDictionary["beer"]["beer_style"] as? String
+        
+        beer.abv = beerDictionary["beer"]["beer_abv"] as? Float
+        
+        beer.ibu = beerDictionary["beer"]["beer_ibu"] as? Float
+        
+        beer.brewery = beerDictionary["brewery"]["brewery_name"] as? String
+        print(beer.brewery)
+        
+        beer.beerDescription = beerDictionary["beer"]["beer_description"] as? String
+        
+        return beer
+    }
     
+    // take array of JSON beer objects and turn it to our Beer class objects
+    class func convertBeers(jsonArray: [NSDictionary]) -> [Beer] {
+        var beers = [Beer]()  // empty beers array that will contain Beer objects
+        
+        for jsonDictionary in jsonArray {
+            let beer = newBeer(jsonDictionary)   // init method
+            try! realmObject.write() {
+                realmObject.add(beer)
+                
+                print("New Beer saved with name: \(beer.beerName)")
+                beers.append(beer)
+            }
+        }
+        return beers
+    }
+
 }

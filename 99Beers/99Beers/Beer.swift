@@ -42,20 +42,4 @@ class Beer: Object {
         return beer
     }
     
-    // take array of JSON beer objects and turn it to our Beer class objects
-    class func convertBeers(jsonArray: [NSDictionary]) -> [Beer] {
-        var beers = [Beer]()  // empty beers array that will contain Beer objects
-        
-        for jsonDictionary in jsonArray {
-            let beer = newBeer(jsonDictionary)   // init method
-            try! realmObject.write() {
-                realmObject.add(beer)
-                
-                print("New Beer saved with name: \(beer.beerName)")
-                beers.append(beer)
-            }
-        }
-        return beers
-    }
-
 }

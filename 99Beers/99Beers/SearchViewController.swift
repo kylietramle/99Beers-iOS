@@ -29,25 +29,29 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return beers!.count ?? 0
+       return beers!.count ?? 0
+
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = searchResultTableView.dequeueReusableCellWithIdentifier("BeerResultCell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = beers![indexPath.row] as? String
+//        cell.textLabel?.text = beers![indexPath.row] as! String
         return cell
         
     }
     
     func makeAPICall() {
-        Alamofire.request(.GET, "https://api.untappd.com/v4/beer/info/16630?client_id=\(clientID)&client_secret=\(clientKey)").responseJSON { response in
+        Alamofire.request(.GET, "https://api.untappd.com/v4/search/beer?q=Pliny&client_id=\(clientID)&client_secret=\(clientKey)").responseJSON { response in
             if let json = response.result.value {
                 print ("Connection to API successful!")
-                self.beers = Beer.convertBeers((json["response"]??["beer"] as? [NSDictionary])!)
-                print (self.beers)
-                self.searchResultTableView.reloadData()
+                if (json["response"]!!["beers"]!!["items"]!!["beer"]) != nil {
+                    let newBeerItem = Beer.(json["response"]!!["beers"]!!["items"]!!["beer"] as? [NSDictionary]!)
+                    print (newBeerItem)
+                    self.beers.append(newBeerItem)
+                    self.searchResultTableView.reloadData()
+                }
             }
         }
     }

@@ -16,7 +16,6 @@ class Beer: Object {
     var beerStyle: String? = nil
     var abv: Float? = nil
     var ibu: Float? = nil
-    var brewery: String? = nil
     var beerDescription: String? = nil
     
     // initialize Beer instance
@@ -37,9 +36,6 @@ class Beer: Object {
         beer.abv = beerDictionary["beer"]["beer_abv"] as? Float
         
         beer.ibu = beerDictionary["beer"]["beer_ibu"] as? Float
-        
-        beer.brewery = beerDictionary["brewery"]["brewery_name"] as? String
-        print(beer.brewery)
         
         beer.beerDescription = beerDictionary["beer"]["beer_description"] as? String
         

@@ -17,7 +17,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var searchResultTableView: UITableView!
     
-    var beers = [Beer] as? NSMutableArray
+    var beers = [Beer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +29,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return beers?.count ?? 0
+        return beers.count ?? 0
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = searchResultTableView.dequeueReusableCellWithIdentifier("BeerResultCell", forIndexPath: indexPath)
         
+        cell.textLabel?.text = beers[indexPath.row] as? String
         return cell
         
     }
@@ -44,7 +45,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         Alamofire.request(.GET, "https://api.untappd.com/v4/beer/info/16630?client_id=\(clientID)&client_secret=\(clientKey)").responseJSON { response in
             if let json = response.result.value {
                 print ("Connection to API successful!")
-                self.beers = Beer.convertBeers((json["response"]["beer"] as? [NSDictionary])!)
+                self.beers = Beer.convertBeers((json["response"]??["beer"] as? [NSDictionary])!)
+                print (self.beers)
                 self.searchResultTableView.reloadData()
             }
         }

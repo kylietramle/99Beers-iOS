@@ -9,9 +9,8 @@
 import UIKit
 import Alamofire
 
-
-let clientID = valueForAPIKey(keyname: "CLIENT_ID")
-let clientKey = valueForAPIKey(keyname: "CLIENT_KEY")
+let clientID = "32BEBC190F5DE4785EED12F6527239AF2623E77D"
+let clientKey = "76BFCCB912EAB5AB2FFC7672C55A5E9530F9492F"
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -24,7 +23,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
-        
+        print("here?")
         makeAPICall()
     }
     
@@ -43,14 +42,20 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func makeAPICall() {
-        Alamofire.request(.GET, "https://api.untappd.com/v4/search/beer?q=Pliny&client_id=\(clientID)&client_secret=\(clientKey)").responseJSON { response in
+        Alamofire.request(.GET, "https://api.untappd.com/v4/search/beer?q=asahi&client_id=32BEBC190F5DE4785EED12F6527239AF2623E77D&client_secret=76BFCCB912EAB5AB2FFC7672C55A5E9530F9492F").responseJSON { response in
             if let json = response.result.value {
                 print ("Connection to API successful!")
-                if (json["response"]!!["beers"]!!["items"]!!["beer"]) != nil {
-                    let newBeerItem = Beer.(json["response"]!!["beers"]!!["items"]!!["beer"] as? [NSDictionary]!)
-                    print (newBeerItem)
-                    self.beers.append(newBeerItem)
-                    self.searchResultTableView.reloadData()
+                if let secondJSON = json["response"] as! NSDictionary? {
+                    if let beersJSON = secondJSON["beers"] as! NSDictionary? {
+                    print(beersJSON["items"])
+                    if let beerItems = beersJSON["items"] as! [NSDictionary]? {
+                        print(beerItems)
+                    }
+                    
+//                    let newBeerItem = Beer.(json["response"]!!["beers"]!!["items"]!!["beer"] as? [NSDictionary]!)
+//                    self.beers.append(newBeerItem)
+//                    self.searchResultTableView.reloadData()
+                }
                 }
             }
         }

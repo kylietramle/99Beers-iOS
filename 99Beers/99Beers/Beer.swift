@@ -23,21 +23,21 @@ class Beer: Object {
         
         let beer = Beer()
         
-        beer.beerName = beerDictionary["beer"]!["beer_name"]
-        print(beer.beerName)
-        
-        if let beerLogo = beerDictionary["beer"]["beer_label"] as? NSURL {
-        } else {
-            beer.beerLogo = nil
-        }
-        
-        beer.beerStyle = beerDictionary["beer"]["beer_style"] as? String
-        
-        beer.abv = beerDictionary["beer"]["beer_abv"] as? Float
-        
-        beer.ibu = beerDictionary["beer"]["beer_ibu"] as? Float
-        
-        beer.beerDescription = beerDictionary["beer"]["beer_description"] as? String
+//        beer.beerName = beerDictionary["beer"]!["beer_name"]
+//        print(beer.beerName)
+//        
+//        if let beerLogo = beerDictionary["beer"]["beer_label"] as? NSURL {
+//        } else {
+//            beer.beerLogo = nil
+//        }
+//        
+//        beer.beerStyle = beerDictionary["beer"]["beer_style"] as? String
+//        
+//        beer.abv = beerDictionary["beer"]["beer_abv"] as? Float
+//        
+//        beer.ibu = beerDictionary["beer"]["beer_ibu"] as? Float
+//        
+//        beer.beerDescription = beerDictionary["beer"]["beer_description"] as? String
         
         return beer
     }

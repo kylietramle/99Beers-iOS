@@ -29,6 +29,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return beers!.count ?? 0
+        
 
     }
     
@@ -36,7 +37,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = searchResultTableView.dequeueReusableCellWithIdentifier("BeerResultCell", forIndexPath: indexPath)
         
-//        cell.textLabel?.text = beers![indexPath.row] as! String
+        cell.textLabel?.text = beers![indexPath.row] as? String
         return cell
         
     }
@@ -47,18 +48,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print ("Connection to API successful!")
                 if let secondJSON = json["response"] as! NSDictionary? {
                     if let beersJSON = secondJSON["beers"] as! NSDictionary? {
-                    print(beersJSON["items"])
-                    if let beerItems = beersJSON["items"] as! [NSDictionary]? {
-                        print(beerItems)
-                    }
+                        if let beerItems = beersJSON["items"] as! [NSDictionary]? {
+                            self.beers = Beer.convertBeers((beerItems as? [NSDictionary]!)!)
+                            self.searchResultTableView.reloadData()
+                            print (self.beers?.count)
+                        }
                     
-//                    let newBeerItem = Beer.(json["response"]!!["beers"]!!["items"]!!["beer"] as? [NSDictionary]!)
-//                    self.beers.append(newBeerItem)
-//                    self.searchResultTableView.reloadData()
-                }
+                    }
                 }
             }
         }
+        
+        print (beers)
     }
     
 }

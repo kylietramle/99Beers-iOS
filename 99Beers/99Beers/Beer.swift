@@ -23,23 +23,37 @@ class Beer: Object {
         
         let beer = Beer()
         
-//        beer.beerName = beerDictionary["beer"]!["beer_name"]
-//        print(beer.beerName)
-//        
-//        if let beerLogo = beerDictionary["beer"]["beer_label"] as? NSURL {
-//        } else {
-//            beer.beerLogo = nil
-//        }
-//        
-//        beer.beerStyle = beerDictionary["beer"]["beer_style"] as? String
-//        
-//        beer.abv = beerDictionary["beer"]["beer_abv"] as? Float
-//        
-//        beer.ibu = beerDictionary["beer"]["beer_ibu"] as? Float
-//        
-//        beer.beerDescription = beerDictionary["beer"]["beer_description"] as? String
+        beer.beerName = beerDictionary["beer_name"] as? String
+        
+        if (beerDictionary["beer_label"] as? NSURL) != nil {
+        } else {
+            beer.beerLogo = nil
+        }
+        
+        beer.beerStyle = beerDictionary["beer_style"] as? String
+        
+        beer.abv = beerDictionary["beer_abv"] as? Float
+        
+        beer.ibu = beerDictionary["beer_ibu"] as? Float
+        
+        beer.beerDescription = beerDictionary["beer_description"] as? String
         
         return beer
     }
     
+    // take array of JSON movie objects and turn it to our Movie class objects
+    class func convertBeers(jsonArray: [NSDictionary]) -> [Beer] {
+        var beers = [Beer]()  // empty beers array that will contain Beer objects
+        
+        for jsonDictionary in jsonArray {
+            let beer = newBeer(jsonDictionary)   // init method
+                
+            print("New Beer saved with name: \(beer.beerName)")
+            beers.append(beer)
+        }
+        
+        return beers
+    }
 }
+    
+

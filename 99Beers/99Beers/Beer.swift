@@ -12,7 +12,7 @@ import RealmSwift
 class Beer: Object {
     
     var beerName: String? = nil
-    var beerLogo: NSURL? = nil
+    var beerLogo: String? = nil
     var beerStyle: String? = nil
     var abv: Float? = nil
     var ibu: Float? = nil

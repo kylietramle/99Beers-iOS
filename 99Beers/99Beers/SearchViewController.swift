@@ -24,21 +24,20 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
         
-        print("here?")
         makeAPICall()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return beers!.count ?? 0
+       return beers?.count ?? 0
         
-
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = searchResultTableView.dequeueReusableCellWithIdentifier("BeerResultCell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = beers![indexPath.row] as? String
+        cell.textLabel?.text = beers![indexPath.row].beerName
+        
         return cell
         
     }
@@ -50,14 +49,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     if let secondJSON = json["response"] as! NSDictionary? {
                         if let beersJSON = secondJSON["beers"] as! NSDictionary? {
                             if let beerItems = beersJSON["items"] as! [NSDictionary]? {
-                                var beersJsonArray: [AnyObject] = []
+                                var beersJsonArray: [NSDictionary] = []
                                 for beerObject in beerItems {
                                     let insideBeerHash = beerObject["beer"]
-                                    beersJsonArray.append(insideBeerHash!)
-                                    
-                                    print (beersJsonArray)
-                                    
+                                    beersJsonArray.append(insideBeerHash as! NSDictionary)
                                 }
+                                
+                                self.beers = Beer.convertBeers((beersJsonArray as? [NSDictionary]!)!)
+                                self.searchResultTableView.reloadData()
+                                
+                                print (self.beers)
                             }
                         }
                     }

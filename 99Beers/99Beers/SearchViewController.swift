@@ -50,9 +50,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     if let secondJSON = json["response"] as! NSDictionary? {
                         if let beersJSON = secondJSON["beers"] as! NSDictionary? {
                             if let beerItems = beersJSON["items"] as! [NSDictionary]? {
+                                var beersJsonArray: [AnyObject] = []
                                 for beerObject in beerItems {
                                     let insideBeerHash = beerObject["beer"]
-                                    let insideBreweryHash = beerObject["brewery"]
+                                    beersJsonArray.append(insideBeerHash!)
+                                    
+                                    print (beersJsonArray)
                                     
                                 }
                             }

@@ -14,8 +14,8 @@ class Beer: Object {
     var beerName: String? = nil
     var beerLogo: String? = nil
     var beerStyle: String? = nil
-    var abv: Float? = nil
-    var ibu: Float? = nil
+    var abv: Float = 0.0
+    var ibu: Float = 0.0
     var beerDescription: String? = nil
     
     // initialize Beer instance
@@ -25,21 +25,19 @@ class Beer: Object {
         
         beer.beerName = beerDictionary["beer_name"] as? String
         
-        if (beerDictionary["beer_label"] as? NSURL) != nil {
-        } else {
-            beer.beerLogo = nil
-        }
+        beer.beerLogo = beerDictionary["beer_label"] as? String
         
         beer.beerStyle = beerDictionary["beer_style"] as? String
         
-        beer.abv = beerDictionary["beer_abv"] as? Float
+        beer.abv = beerDictionary["beer_abv"] as! Float
         
-        beer.ibu = beerDictionary["beer_ibu"] as? Float
+        beer.ibu = beerDictionary["beer_ibu"] as! Float
         
-        beer.beerDescription = beerDictionary["beer_description"] as? String
+        beer.beerDescription = beerDictionary["beer_description"] as? String ?? nil
         
         return beer
     }
+
     
     // take array of JSON movie objects and turn it to our Movie class objects
     class func convertBeers(jsonArray: [NSDictionary]) -> [Beer] {

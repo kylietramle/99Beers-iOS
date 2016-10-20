@@ -66,4 +66,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = searchResultTableView.indexPathForCell(cell)    // narrow down which beer is clicked
+        let beer = beers![indexPath!.row]
+        
+        let beerDetailsController = segue.destinationViewController as! BeerDetailsViewController
+        
+        beerDetailsController.beer = beer
+    }
+
 }

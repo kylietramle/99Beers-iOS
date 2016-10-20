@@ -192,7 +192,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqf-fK-vMR">
-                            <rect key="frame" x="16" y="308" width="340" height="141"/>
+                            <rect key="frame" x="16" y="283" width="340" height="141"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <string key="text">Description description description description description description description description description description description description description description</string>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>

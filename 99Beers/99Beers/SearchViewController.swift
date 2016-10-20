@@ -43,15 +43,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         // filter through the beers
             
-        self.beers?.filter({ (beer: Beer) -> Bool in
+        self.filteredBeers = (self.beers?.filter({ (beer: Beer) -> Bool in
             if beer.beerName!.containsString(self.searchController.searchBar.text!) {
                 return true
             } else {
                 return false
             }
-        })
+        }))!
         // update the results TableView
-        self.searchResultTableView.reloadData()
+        self.resultsController.tableView.reloadData()
         
     }
     

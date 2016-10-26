@@ -28,12 +28,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
 
         createSearchBar()
-        makeAPICall()
         
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
+        
     }
-    
+    // Functions for adding search
     func createSearchBar() {
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Anchor Steam"
@@ -42,11 +42,20 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // put into navigation bar
         self.navigationItem.titleView = searchBar
     }
+
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        makeAPICall(searchBar.text!)
+        
+        shouldShowSearchResults = true
+        searchBar.endEditing(true)
+        
+        self.searchResultTableView.reloadData()
+    }
     
-    // Functions for adding search
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filteredBeers = (beers?.filter({ (beer: Beer) -> Bool in
             return beer.beerName?.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
+            
         }))!
         
         if searchText != "" {
@@ -57,7 +66,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.searchResultTableView.reloadData()
         }
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if shouldShowSearchResults {
             return filteredBeers.count
@@ -70,6 +79,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = searchResultTableView.dequeueReusableCellWithIdentifier("BeerResultCell", forIndexPath: indexPath)
         if shouldShowSearchResults {
+            print("tableView here")
             cell.textLabel?.text = filteredBeers[indexPath.row].beerName
         } else {
             cell.textLabel?.text = beers![indexPath.row].beerName
@@ -78,8 +88,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
-    func makeAPICall() {
-         Alamofire.request(.GET, "https://api.untappd.com/v4/search/beer?q=asahi&client_id=32BEBC190F5DE4785EED12F6527239AF2623E77D&client_secret=76BFCCB912EAB5AB2FFC7672C55A5E9530F9492F").responseJSON { response in
+    func makeAPICall(beer: String) {
+         Alamofire.request(.GET, "https://api.untappd.com/v4/search/beer?q=\(beer)&client_id=32BEBC190F5DE4785EED12F6527239AF2623E77D&client_secret=76BFCCB912EAB5AB2FFC7672C55A5E9530F9492F").responseJSON { response in
                 if let json = response.result.value {
                     print ("Connection to API successful!")
                     if let secondJSON = json["response"] as! NSDictionary? {
@@ -92,9 +102,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                 }
                                 
                                 self.beers = Beer.convertBeers((beersJsonArray as? [NSDictionary]!)!)
-                                self.searchResultTableView.reloadData()
-                                
-                                print (self.beers)
+                                print(self.beers)
                             }
                         }
                     }
@@ -112,17 +120,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let beerDetailsController = segue.destinationViewController as! BeerDetailsViewController
         
         beerDetailsController.beer = beer
-    }
-    
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        searchBar.endEditing(true)
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        shouldShowSearchResults = true
-        searchBar.endEditing(true)
-        
-        self.searchResultTableView.reloadData()
     }
 
 }

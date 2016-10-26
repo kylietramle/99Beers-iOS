@@ -46,7 +46,7 @@ class Beer: Object {
         for jsonDictionary in jsonArray {
             let beer = newBeer(jsonDictionary)   // init method
                 
-            print("New Beer saved with name: \(beer.beerName)")
+//            print("New Beer saved with name: \(beer.beerName)")
             beers.append(beer)
         }
         

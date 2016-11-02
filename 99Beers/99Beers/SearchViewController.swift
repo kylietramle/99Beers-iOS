@@ -69,20 +69,21 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func makeAPICall(beer: String) {
         print("THE SEARCHED BEER IS \(beer)")
-         Alamofire.request(.GET, "https://api.untappd.com/v4/search/beer?q=\(beer)&client_id=32BEBC190F5DE4785EED12F6527239AF2623E77D&client_secret=76BFCCB912EAB5AB2FFC7672C55A5E9530F9492F").responseJSON { response in
+        let apiEndpoint: String = "https://api.untappd.com/v4/search/beer?q=\(beer)&client_id=32BEBC190F5DE4785EED12F6527239AF2623E77D&client_secret=76BFCCB912EAB5AB2FFC7672C55A5E9530F9492F"
+         Alamofire.request(.GET, apiEndpoint).responseJSON { response in
                 if let json = response.result.value {
                     print ("Connection to API successful!")
-                    if let secondJSON = json["response"] as! NSDictionary? {
-                        if let beersJSON = secondJSON["beers"] as! NSDictionary? {
-                            if let beerItems = beersJSON["items"] as! [NSDictionary]? {
+                    if let secondJSON = json["response"] {
+                        if let beersJSON = secondJSON!["beers"] {
+                            if let beerItems = beersJSON!["items"] as? [NSDictionary] {
                                 var beersJsonArray: [NSDictionary] = []
                                 for beerObject in beerItems {
                                     let insideBeerHash = beerObject["beer"]
                                     beersJsonArray.append(insideBeerHash as! NSDictionary)
                                 }
                                 
-                                self.beers = Beer.convertBeers((beersJsonArray as? [NSDictionary]!)!)
-//                                print(self.beers)
+                                self.beers = Beer.convertBeers((beersJsonArray as [NSDictionary]!)!)
+                                print(self.beers)
                                 self.searchResultTableView.reloadData()
 
                             }

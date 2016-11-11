@@ -73,14 +73,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
          Alamofire.request(apiEndpoint).responseJSON { response in
                 if let json = response.result.value {
                     print ("Connection to API successful!")
-//                    print (json)
-                    print (Mirror(reflecting: json))
                     if let responseJSON = (json as AnyObject)["response"] as? NSDictionary {
                         if let beersJSON = (responseJSON as AnyObject)["beers"] as? NSDictionary {
-//                                print(beersJSON)
                                 print (Mirror(reflecting: beersJSON))
                             if let beerItems = (beersJSON as AnyObject)["items"] as? [NSDictionary] {
-                                print (Mirror(reflecting: beerItems))
+                                
                                 var beersJsonArray: [NSDictionary] = []
                                 for beerObject in beerItems {
                                     let insideBeerHash = beerObject["beer"]
@@ -90,7 +87,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                 self.beers = Beer.convertBeers((beersJsonArray as [NSDictionary]!)!)
                                 print(self.beers!)
                                 self.searchResultTableView.reloadData()
-//
                             }
                        }
                     }

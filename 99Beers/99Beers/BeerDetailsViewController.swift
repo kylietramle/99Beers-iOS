@@ -12,6 +12,7 @@ import AlamofireImage
 class BeerDetailsViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var beerNameText: UILabel!
     @IBOutlet weak var beerLogoImage: UIImageView!
     @IBOutlet weak var beerStyleText: UILabel!
     @IBOutlet weak var beerAbvText: UILabel!
@@ -29,6 +30,7 @@ class BeerDetailsViewController: UIViewController {
             let url = URL(string: beer!.beerLogo!)
             beerLogoImage.af_setImage(withURL: url!)
         }
+        self.beerNameText.text = beer?.beerName
         self.beerStyleText.text = beer?.beerStyle
         self.beerAbvText.text = String(format:"%.1f", (beer?.abv)!)
         self.beerIbuText.text = String(format:"%.1f", (beer?.ibu)!)

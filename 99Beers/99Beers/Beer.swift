@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import RealmSwift
 
-class Beer: Object {
+class Beer {
     
     var beerName: String? = nil
     var beerLogo: String? = nil
@@ -19,7 +18,7 @@ class Beer: Object {
     var beerDescription: String? = nil
     
     // initialize Beer instance
-    class func newBeer(beerDictionary: NSDictionary) -> Beer {
+    class func newBeer(_ beerDictionary: NSDictionary) -> Beer {
         
         let beer = Beer()
         
@@ -40,7 +39,7 @@ class Beer: Object {
 
     
     // take array of JSON movie objects and turn it to our Movie class objects
-    class func convertBeers(jsonArray: [NSDictionary]) -> [Beer] {
+    class func convertBeers(_ jsonArray: [NSDictionary]) -> [Beer] {
         var beers = [Beer]()  // empty beers array that will contain Beer objects
         
         for jsonDictionary in jsonArray {

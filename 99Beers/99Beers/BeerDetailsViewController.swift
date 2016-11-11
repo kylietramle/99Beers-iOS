@@ -26,7 +26,8 @@ class BeerDetailsViewController: UIViewController {
         view.addSubview(scrollView)
         
         if(beer?.beerLogo != nil) {
-            beerLogoImage.af_setImageWithURL(NSURL(string: beer!.beerLogo!)!)
+            let url = URL(string: beer!.beerLogo!)
+            beerLogoImage.af_setImage(withURL: url!)
         }
         self.beerStyleText.text = beer?.beerStyle
         self.beerAbvText.text = String(format:"%.1f", (beer?.abv)!)

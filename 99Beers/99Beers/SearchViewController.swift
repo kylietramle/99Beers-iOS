@@ -37,16 +37,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.titleView = searchBar
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         makeAPICall(searchBar.text!)
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
@@ -55,27 +55,32 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // End of search bars
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return beers!.count ?? 0
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return beers!.count
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = searchResultTableView.dequeueReusableCellWithIdentifier("BeerResultCell", forIndexPath: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = searchResultTableView.dequeueReusableCell(withIdentifier: "BeerResultCell", for: indexPath)
         cell.textLabel?.text = beers![indexPath.row].beerName
         
         return cell
     }
     
-    func makeAPICall(beer: String) {
+    func makeAPICall(_ beer: String) {
         print("THE SEARCHED BEER IS \(beer)")
         let apiEndpoint: String = "https://api.untappd.com/v4/search/beer?q=\(beer)&client_id=32BEBC190F5DE4785EED12F6527239AF2623E77D&client_secret=76BFCCB912EAB5AB2FFC7672C55A5E9530F9492F"
-         Alamofire.request(.GET, apiEndpoint).responseJSON { response in
+         Alamofire.request(apiEndpoint).responseJSON { response in
                 if let json = response.result.value {
                     print ("Connection to API successful!")
-                    if let secondJSON = json["response"] {
-                        if let beersJSON = secondJSON!["beers"] {
-                            if let beerItems = beersJSON!["items"] as? [NSDictionary] {
+//                    print (json)
+                    print (Mirror(reflecting: json))
+                    if let responseJSON = (json as AnyObject)["response"] as? NSDictionary {
+                        if let beersJSON = (responseJSON as AnyObject)["beers"] as? NSDictionary {
+//                                print(beersJSON)
+                                print (Mirror(reflecting: beersJSON))
+                            if let beerItems = (beersJSON as AnyObject)["items"] as? [NSDictionary] {
+                                print (Mirror(reflecting: beerItems))
                                 var beersJsonArray: [NSDictionary] = []
                                 for beerObject in beerItems {
                                     let insideBeerHash = beerObject["beer"]
@@ -83,11 +88,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                 }
                                 
                                 self.beers = Beer.convertBeers((beersJsonArray as [NSDictionary]!)!)
-                                print(self.beers)
+                                print(self.beers!)
                                 self.searchResultTableView.reloadData()
-
+//
                             }
-                        }
+                       }
                     }
             }
             
@@ -95,13 +100,13 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
         
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let cell = sender as! UITableViewCell
-        let indexPath = searchResultTableView.indexPathForCell(cell)    // narrow down which beer is clicked
+        let indexPath = searchResultTableView.indexPath(for: cell)    // narrow down which beer is clicked
         let beer = beers![indexPath!.row]
         
-        let beerDetailsController = segue.destinationViewController as! BeerDetailsViewController
+        let beerDetailsController = segue.destination as! BeerDetailsViewController
         
         beerDetailsController.beer = beer
     }

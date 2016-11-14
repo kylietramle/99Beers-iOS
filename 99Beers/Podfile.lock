@@ -14,11 +14,6 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.16.1):
     - FBSDKCoreKit
-  - Realm (2.0.3):
-    - Realm/Headers (= 2.0.3)
-  - Realm/Headers (2.0.3)
-  - RealmSwift (2.0.3):
-    - Realm (= 2.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -26,28 +21,6 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
-  - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
-  - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
-
-EXTERNAL SOURCES:
-  Realm:
-    :branch: master
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
-  RealmSwift:
-    :branch: master
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
-
-CHECKOUT OPTIONS:
-  Realm:
-    :commit: b33364b6e1af975005f2447824a445b3d52260c8
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
-  RealmSwift:
-    :commit: b33364b6e1af975005f2447824a445b3d52260c8
-    :git: https://github.com/realm/realm-cocoa.git
-    :submodules: true
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
@@ -56,9 +29,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
   FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
   FBSDKShareKit: 53af0239b5bd2ebf191f32f75991245a208cc982
-  Realm: 5f008bfe3c8c47142eddfc30b8c1584cde22db24
-  RealmSwift: 79a9bc83e7ef4fbde17e0f303c5fadb99264a6be
 
-PODFILE CHECKSUM: c67f6ca838a0369f7009453f198b2fe8f2e7d416
+PODFILE CHECKSUM: d1ae353338bb523c4fac122c0a062453a9c549ca
 
 COCOAPODS: 1.0.1

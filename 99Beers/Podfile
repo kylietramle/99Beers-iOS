@@ -8,8 +8,6 @@ target '99Beers' do
   # Pods for 99Beers
   pod 'Alamofire', '~> 4.0'
   pod 'AlamofireImage', '~> 3.1'
-  pod 'Realm', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master’,:submodules => true
-  pod 'RealmSwift', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master’,:submodules => true
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'

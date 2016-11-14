@@ -10,6 +10,9 @@ target '99Beers' do
   pod 'AlamofireImage', '~> 3.1'
   pod 'Realm', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master’,:submodules => true
   pod 'RealmSwift', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master’,:submodules => true
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
+  pod 'FBSDKLoginKit'
 end
 
 post_install do |installer|

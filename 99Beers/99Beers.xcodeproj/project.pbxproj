@@ -11,6 +11,7 @@
 		61552C7E1DB1671B002CCE29 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61552C7D1DB1671B002CCE29 /* Beer.swift */; };
 		618319F11DD6689F0019629C /* AddBeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618319F01DD6689F0019629C /* AddBeerViewController.swift */; };
 		61DB28CE1DB807BD00D292C4 /* BeerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DB28CD1DB807BD00D292C4 /* BeerDetailsViewController.swift */; };
+		61F524FE1DDA4D1B0002ED4C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F524FD1DDA4D1B0002ED4C /* LogInViewController.swift */; };
 		61F788841DA996F200B82110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F788831DA996F200B82110 /* AppDelegate.swift */; };
 		61F788891DA996F300B82110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F788871DA996F300B82110 /* Main.storyboard */; };
 		61F7888B1DA996F300B82110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61F7888A1DA996F300B82110 /* Assets.xcassets */; };
@@ -26,6 +27,8 @@
 		61552C7D1DB1671B002CCE29 /* Beer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		618319F01DD6689F0019629C /* AddBeerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBeerViewController.swift; sourceTree = "<group>"; };
 		61DB28CD1DB807BD00D292C4 /* BeerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeerDetailsViewController.swift; sourceTree = "<group>"; };
+		61F524FD1DDA4D1B0002ED4C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		61F524FF1DDA591D0002ED4C /* 99Beers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 99Beers.entitlements; sourceTree = "<group>"; };
 		61F788801DA996F200B82110 /* 99Beers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 99Beers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F788831DA996F200B82110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61F788881DA996F300B82110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 		61F788821DA996F200B82110 /* 99Beers */ = {
 			isa = PBXGroup;
 			children = (
+				61F524FF1DDA591D0002ED4C /* 99Beers.entitlements */,
 				61F788831DA996F200B82110 /* AppDelegate.swift */,
 				61F788871DA996F300B82110 /* Main.storyboard */,
 				61552C6D1DB0201E002CCE29 /* .gitignore */,
@@ -87,6 +91,7 @@
 				61552C7D1DB1671B002CCE29 /* Beer.swift */,
 				61DB28CD1DB807BD00D292C4 /* BeerDetailsViewController.swift */,
 				618319F01DD6689F0019629C /* AddBeerViewController.swift */,
+				61F524FD1DDA4D1B0002ED4C /* LogInViewController.swift */,
 			);
 			path = 99Beers;
 			sourceTree = "<group>";
@@ -135,7 +140,13 @@
 				TargetAttributes = {
 					61F7887F1DA996F200B82110 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 4M3QJKH5SU;
 						LastSwiftMigration = 0810;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -226,6 +237,7 @@
 			files = (
 				61F788961DA9A4EF00B82110 /* SearchViewController.swift in Sources */,
 				61DB28CE1DB807BD00D292C4 /* BeerDetailsViewController.swift in Sources */,
+				61F524FE1DDA4D1B0002ED4C /* LogInViewController.swift in Sources */,
 				618319F11DD6689F0019629C /* AddBeerViewController.swift in Sources */,
 				61F788841DA996F200B82110 /* AppDelegate.swift in Sources */,
 				61552C7E1DB1671B002CCE29 /* Beer.swift in Sources */,
@@ -350,6 +362,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = 99Beers/99Beers.entitlements;
+				DEVELOPMENT_TEAM = 4M3QJKH5SU;
 				INFOPLIST_FILE = 99Beers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylietle.-9Beers";
@@ -364,6 +378,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = 99Beers/99Beers.entitlements;
+				DEVELOPMENT_TEAM = 4M3QJKH5SU;
 				INFOPLIST_FILE = 99Beers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kylietle.-9Beers";

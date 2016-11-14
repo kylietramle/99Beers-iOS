@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="f4n-23-ib4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="_9Beers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInViewController" id="BYZ-38-t0r" customClass="LogInViewController" customModule="_9Beers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,10 +38,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="q7z-EI-hpE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1.5" y="496.5"/>
+            <point key="canvasLocation" x="478" y="496"/>
         </scene>
         <!--Bar Feed-->
         <scene sceneID="Y58-1a-iKw">
@@ -84,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngP-3D-Hvv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926.5" y="496.5"/>
+            <point key="canvasLocation" x="1513.5" y="496.5"/>
         </scene>
         <!--Beer Details-->
         <scene sceneID="3um-74-C4q">
@@ -191,6 +192,9 @@
                             <state key="normal" title="Add This Beer">
                                 <color key="titleColor" red="0.40000000000000002" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <segue destination="8US-DH-YLp" kind="push" id="z5b-Br-bwd"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BMD-e4-j5U">
                             <rect key="frame" x="16" y="179" width="343" height="145"/>
@@ -205,6 +209,30 @@
                 </scrollView>
             </objects>
             <point key="canvasLocation" x="2392" y="1348"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HvX-CQ-3PX">
+            <objects>
+                <viewController id="8US-DH-YLp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qAL-EB-oGT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Beer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kvR-VZ-fLV">
+                                <rect key="frame" x="134" y="55" width="90" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ztc-Ly-42q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ddG-w1-rIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3556.5" y="950.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="K2r-C8-LPJ">
@@ -233,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAz-jJ-D8i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846" y="497"/>
+            <point key="canvasLocation" x="2432.5" y="496.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hZQ-We-ge8">
@@ -251,7 +279,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ND-xw-9CM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="496"/>
+            <point key="canvasLocation" x="1056.5" y="495.5"/>
         </scene>
         <!--Search Bar-->
         <scene sceneID="Tnn-Pz-Plw">
@@ -318,7 +346,6 @@
         <!--Navigation Controller-->
         <scene sceneID="6GZ-tt-Vu4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="98V-tY-Sbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="SearchNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="5Gh-ag-gCZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9eB-Lo-oFL">
@@ -330,6 +357,7 @@
                         <segue destination="0HF-LK-vyM" kind="relationship" relationship="rootViewController" id="JMz-rF-QL4"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="98V-tY-Sbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1469" y="1348"/>
         </scene>
@@ -349,7 +377,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cq2-EY-GT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1418" y="497"/>
+            <point key="canvasLocation" x="2004.5" y="496.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qum-We-wWZ">

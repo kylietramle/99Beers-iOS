@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import Firebase
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
 
@@ -23,6 +24,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         
         loginButton.delegate = self
         loginButton.readPermissions = ["email", "public_profile"]
+        
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -31,18 +33,37 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
             return
         }
         
-        print("Successfully logged in with Facebook")
+        showEmailAddress()
         
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, err) in
+    }
+    
+    func showEmailAddress () {
+        // grab FB's access token string
+        let accessToken = FBSDKAccessToken.current()
+        guard let accessTokenString = accessToken?.tokenString else {return}
+        
+        let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
+        
+        FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
             if error != nil {
+                print("Something went wrong with our FB user: ", error ?? "")
+                return
+            }
+            
+            print("Successfully loggen in with user: ", user ?? "")
+        })
+        
+        // get user's id, name, email
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, err) in
+            if err != nil {
                 print("Failed to start graph request", err as Any)
                 return
             }
             
             print(result as Any)
         }
+
     }
-    
  
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Logged out of Facebook!")

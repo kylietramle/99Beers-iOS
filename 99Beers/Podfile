@@ -11,6 +11,7 @@ target '99Beers' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
+  pod 'Firebase/Auth'
 end
 
 post_install do |installer|

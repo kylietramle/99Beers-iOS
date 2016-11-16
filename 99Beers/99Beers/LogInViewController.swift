@@ -11,33 +11,156 @@ import FBSDKLoginKit
 import Firebase
 
 class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
+    
+    let inputsContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.translatesAutoresizingMaskIntoConstraints = false // for anchor to work
+        view.layer.cornerRadius = 5
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    let loginRegisterButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor(r: 255, g: 195, b:15)
+        button.setTitle("Register", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        return button
+    }()
+    
+    let fbLoginButton: FBSDKLoginButton = {
+        
+        let fbButton = FBSDKLoginButton()
+        fbButton.translatesAutoresizingMaskIntoConstraints = false
+       
+        return fbButton
+    }()
+    
+    // text fields and separators
+    let nameTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Name"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textField
+    }()
+    
+    let nameSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r: 220, g:220, b: 220)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textField
+    }()
+    
+    let emailSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r: 220, g:220, b: 220)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Password"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.isSecureTextEntry = true
+        
+        return textField
+    }()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(r: 255, g: 214, b: 89)
-        
-        let inputsContainerView = UIView()
-        inputsContainerView.backgroundColor = UIColor.white
-        inputsContainerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(inputsContainerView)
+        view.addSubview(loginRegisterButton)
+        view.addSubview(fbLoginButton)
         
-        // x, y, width, height constraitns for inputsContainer
+        setupInputsContainerView()
+        setupLoginRegisterButton()
+        setupfbLoginButton() // not working
+        
+        fbLoginButton.delegate = self
+        fbLoginButton.readPermissions = ["email", "public_profile"]
+       
+    }
+    
+    func setupInputsContainerView() {
+        // x, y, width, height constraitns for input container
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true // 12 pixels left 12 right
         inputsContainerView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
-        //FB login
-        let loginButton = FBSDKLoginButton()
+        inputsContainerView.addSubview(nameTextField)
+        inputsContainerView.addSubview(nameSeparatorView)
+        inputsContainerView.addSubview(emailTextField)
+        inputsContainerView.addSubview(emailSeparatorView)
+        inputsContainerView.addSubview(passwordTextField)
         
-        view.addSubview(loginButton)
-        // frames are obsolete; change to constraints later
-        loginButton.frame = CGRect(x: 16, y:50, width: view.frame.width - 32, height: 50)
+        // x, y, width, height constraitns for nameTextField
+        nameTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        nameTextField.topAnchor.constraint(equalTo: inputsContainerView.topAnchor).isActive = true
+        nameTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/3).isActive = true
+
+        // x, y, width, height constraitns for nameSeparator
+        nameSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
+        nameSeparatorView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
+        nameSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        nameSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        loginButton.delegate = self
-        loginButton.readPermissions = ["email", "public_profile"]
+        // x, y, width, height constraitns for emaiTextField
+        emailTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
+        emailTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/3).isActive = true
         
+        // x, y, width, height constraitns for emailSeparator
+        emailSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
+        emailSeparatorView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        emailSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        emailSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        // x, y, width, height constraitns for passwordTextField
+        passwordTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        passwordTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/3).isActive = true
+
+
+    }
+    
+    func setupLoginRegisterButton() {
+        // x, y, width, height constraitns for register button
+         loginRegisterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+         loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 12).isActive = true
+        loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    func setupfbLoginButton() {
+        // x, y, width, height constraitns for fb button
+        fbLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        fbLoginButton.topAnchor.constraint(equalTo: loginRegisterButton.bottomAnchor, constant: 12).isActive = true
+        fbLoginButton.widthAnchor.constraint(equalTo: loginRegisterButton.widthAnchor).isActive = true
+        fbLoginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+
     }
     
     // white status bar

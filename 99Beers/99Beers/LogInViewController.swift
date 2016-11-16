@@ -17,6 +17,18 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         
         view.backgroundColor = UIColor(r: 255, g: 214, b: 89)
         
+        let inputsContainerView = UIView()
+        inputsContainerView.backgroundColor = UIColor.white
+        inputsContainerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(inputsContainerView)
+        
+        // x, y, width, height constraitns for inputsContainer
+        inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true // 12 pixels left 12 right
+        inputsContainerView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        //FB login
         let loginButton = FBSDKLoginButton()
         
         view.addSubview(loginButton)

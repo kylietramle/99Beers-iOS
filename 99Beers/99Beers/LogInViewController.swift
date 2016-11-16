@@ -14,9 +14,10 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let loginButton = FBSDKLoginButton()
         
+        view.backgroundColor = UIColor(r: 255, g: 214, b: 89)
+        
+        let loginButton = FBSDKLoginButton()
         
         view.addSubview(loginButton)
         // frames are obsolete; change to constraints later
@@ -25,6 +26,11 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         loginButton.delegate = self
         loginButton.readPermissions = ["email", "public_profile"]
         
+    }
+    
+    // white status bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -69,3 +75,13 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         print("Logged out of Facebook!")
     }
 }
+
+extension UIColor {
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
+    }
+}
+
+
+
+

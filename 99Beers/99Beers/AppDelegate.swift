@@ -21,42 +21,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
        
         window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "LogInViewController")
-        
-        window?.rootViewController = initialViewController
+        window?.makeKeyAndVisible()
+        window?.rootViewController = UINavigationController(rootViewController: DefaultViewController())
         
         // FB SDK
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        //Search bar button
-        let searchNavigationController = storyboard.instantiateViewController(withIdentifier: "SearchNavigationController") as! UINavigationController
-        searchNavigationController.tabBarItem.title = "Search"
-        searchNavigationController.tabBarItem.image = UIImage(named: "search")
         
-        //Bar feed bar button
-        let barFeedNavigationController = storyboard.instantiateViewController(withIdentifier: "BarFeedNavigationController") as! UINavigationController
-        barFeedNavigationController.tabBarItem.title = "Bar Feed"
-        barFeedNavigationController.tabBarItem.image = UIImage(named: "barfeed")
+//        //setup tabbar controller - add tab bar buttons
+//        let tabBarController = UITabBarController()
+//        
+//        let searchNavigationController = SearchViewController()
+//        let searchNavigationBarItem = UITabBarItem(title: "search", image: nil, selectedImage: nil)
+//        searchNavigationController.tabBarItem = searchNavigationBarItem
+//        
+//        let accountNavigationController = LogInViewController()
+//        let accountavigationBarItem = UITabBarItem(title: "search", image: nil, selectedImage: nil)
+//        accountNavigationController.tabBarItem = accountavigationBarItem
+//        
+//        tabBarController.viewControllers = [searchNavigationController, accountNavigationController]
         
-        //Trophy wall bar button
-        let trophyWallNavigationController = storyboard.instantiateViewController(withIdentifier: "TrophyWallNavigationController") as! UINavigationController
-        trophyWallNavigationController.tabBarItem.title = "Trophy Wall"
-        trophyWallNavigationController.tabBarItem.image = UIImage(named: "trophy wall")
-
-        //Account bar button
-        let accountNavigationController = storyboard.instantiateViewController(withIdentifier: "AccountNavigationController") as! UINavigationController
-        accountNavigationController.tabBarItem.title = "Account"
-        accountNavigationController.tabBarItem.image = UIImage(named: "search")
-        
-        //setup tabbar controller - add tab bar buttons
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [searchNavigationController, barFeedNavigationController, trophyWallNavigationController, accountNavigationController]
-        UITabBar.appearance().tintColor = UIColor.red
-        UITabBar.appearance().barTintColor = UIColor.black
-        
-        window?.makeKeyAndVisible()
-        
+       
         return true
     }
     

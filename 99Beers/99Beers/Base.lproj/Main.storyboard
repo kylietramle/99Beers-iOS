@@ -36,7 +36,6 @@
                                 <state key="normal" title="Sign In"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="q7z-EI-hpE"/>
                 </viewController>

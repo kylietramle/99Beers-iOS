@@ -13,6 +13,7 @@
 		61DB28CE1DB807BD00D292C4 /* BeerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DB28CD1DB807BD00D292C4 /* BeerDetailsViewController.swift */; };
 		61F524FE1DDA4D1B0002ED4C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F524FD1DDA4D1B0002ED4C /* LogInViewController.swift */; };
 		61F525011DDA73140002ED4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61F525001DDA73140002ED4C /* GoogleService-Info.plist */; };
+		61F525031DDBF1B90002ED4C /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F525021DDBF1B90002ED4C /* DefaultViewController.swift */; };
 		61F788841DA996F200B82110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F788831DA996F200B82110 /* AppDelegate.swift */; };
 		61F788891DA996F300B82110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F788871DA996F300B82110 /* Main.storyboard */; };
 		61F7888B1DA996F300B82110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61F7888A1DA996F300B82110 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		61F524FD1DDA4D1B0002ED4C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		61F524FF1DDA591D0002ED4C /* 99Beers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 99Beers.entitlements; sourceTree = "<group>"; };
 		61F525001DDA73140002ED4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		61F525021DDBF1B90002ED4C /* DefaultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultViewController.swift; sourceTree = "<group>"; };
 		61F788801DA996F200B82110 /* 99Beers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 99Beers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F788831DA996F200B82110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61F788881DA996F300B82110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +63,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		61F525051DDBF3270002ED4C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				61F524FD1DDA4D1B0002ED4C /* LogInViewController.swift */,
+				61F525021DDBF1B90002ED4C /* DefaultViewController.swift */,
+				61F788951DA9A4EF00B82110 /* SearchViewController.swift */,
+				61DB28CD1DB807BD00D292C4 /* BeerDetailsViewController.swift */,
+				618319F01DD6689F0019629C /* AddBeerViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		61F788771DA996F200B82110 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +96,7 @@
 		61F788821DA996F200B82110 /* 99Beers */ = {
 			isa = PBXGroup;
 			children = (
+				61F525051DDBF3270002ED4C /* Controllers */,
 				61F524FF1DDA591D0002ED4C /* 99Beers.entitlements */,
 				61F788831DA996F200B82110 /* AppDelegate.swift */,
 				61F788871DA996F300B82110 /* Main.storyboard */,
@@ -90,11 +105,7 @@
 				61F7888C1DA996F300B82110 /* LaunchScreen.storyboard */,
 				61F7888F1DA996F300B82110 /* Info.plist */,
 				61F525001DDA73140002ED4C /* GoogleService-Info.plist */,
-				61F788951DA9A4EF00B82110 /* SearchViewController.swift */,
 				61552C7D1DB1671B002CCE29 /* Beer.swift */,
-				61DB28CD1DB807BD00D292C4 /* BeerDetailsViewController.swift */,
-				618319F01DD6689F0019629C /* AddBeerViewController.swift */,
-				61F524FD1DDA4D1B0002ED4C /* LogInViewController.swift */,
 			);
 			path = 99Beers;
 			sourceTree = "<group>";
@@ -243,6 +254,7 @@
 				61DB28CE1DB807BD00D292C4 /* BeerDetailsViewController.swift in Sources */,
 				61F524FE1DDA4D1B0002ED4C /* LogInViewController.swift in Sources */,
 				618319F11DD6689F0019629C /* AddBeerViewController.swift in Sources */,
+				61F525031DDBF1B90002ED4C /* DefaultViewController.swift in Sources */,
 				61F788841DA996F200B82110 /* AppDelegate.swift in Sources */,
 				61552C7E1DB1671B002CCE29 /* Beer.swift in Sources */,
 			);

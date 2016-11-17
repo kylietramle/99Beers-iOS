@@ -21,7 +21,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         return view
     }()
     
-    let loginRegisterButton: UIButton = {
+    lazy var loginRegisterButton: UIButton = { // lazy var gives access to 'self'
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 255, g: 195, b:15)
         button.setTitle("Register", for: .normal)
@@ -29,8 +29,27 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
+        button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
+        
         return button
     }()
+    
+    func handleRegister() {
+        // use guard statements for form validation
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            print("Form is not valid")
+            return
+        }
+        
+        FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
+            if error != nil {
+                print(error ?? "No error found")
+                return
+            }
+        }
+            
+            // successfully authenticated user
+    }
     
     let fbLoginButton: FBSDKLoginButton = {
         
@@ -187,6 +206,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         return .lightContent
     }
     
+    // FB Login & Firebase
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
             print(error)

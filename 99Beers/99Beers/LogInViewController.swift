@@ -81,7 +81,14 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         
         return textField
     }()
-
+    
+    let logoImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "99logo")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,14 +97,24 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
         view.addSubview(fbLoginButton)
+        view.addSubview(logoImage)
         
         setupInputsContainerView()
         setupLoginRegisterButton()
-        setupfbLoginButton() // not working
+        setupfbLoginButton()
+        setupLogoImageView()
         
         fbLoginButton.delegate = self
         fbLoginButton.readPermissions = ["email", "public_profile"]
        
+    }
+    
+    func setupLogoImageView() {
+        // x, y, width, height constraitns for logo image
+        logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoImage.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -12).isActive = true
+        logoImage.widthAnchor.constraint(equalToConstant: 138).isActive = true
+        logoImage.heightAnchor.constraint(equalToConstant: 54).isActive = true
     }
     
     func setupInputsContainerView() {
@@ -125,6 +142,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         nameSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         nameSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         // x, y, width, height constraitns for emaiTextField
         emailTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
         emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
@@ -137,6 +155,7 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         emailSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         emailSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         // x, y, width, height constraitns for passwordTextField
         passwordTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true

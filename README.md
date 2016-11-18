@@ -11,7 +11,7 @@ Status: *In development*
 
 ## Video Walkthrough (Login View)
 
-![NowPlaying app walkthrough](99beers_login.gif)
+![99Beers walkthrough](99beers_login.gif)
 
 ## Notes
 

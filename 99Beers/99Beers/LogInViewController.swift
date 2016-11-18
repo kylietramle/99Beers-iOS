@@ -129,6 +129,27 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         return imageView
     }()
     
+    lazy var loginRegisterSegmentedControl: UISegmentedControl = {
+        let sc = UISegmentedControl(items: ["Login", "Register"])
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        sc.tintColor = UIColor.white
+        sc.selectedSegmentIndex = 1
+        sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
+        
+        return sc
+    }()
+    
+    func handleLoginRegisterChange() {
+        // loginRegisterSegmentedControl.selectedSegmentIndex - prints out 0,1 toggle between login & register
+        // title for segment accepts index as an int, and selectedSegmentIndex is an int
+        
+        let title = loginRegisterSegmentedControl.titleForSegment(at: loginRegisterSegmentedControl.selectedSegmentIndex)
+        loginRegisterButton.setTitle(title, for: .normal)
+        
+        // change height of inputsContainerView; if 0 aka 'login', height is 100, otherwise, 150
+        inputsContainerViewHeightAnchor?.constant = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 100 : 150
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -137,31 +158,44 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         view.addSubview(loginRegisterButton)
         view.addSubview(fbLoginButton)
         view.addSubview(logoImage)
+        view.addSubview(loginRegisterSegmentedControl)
         
         setupInputsContainerView()
         setupLoginRegisterButton()
         setupfbLoginButton()
         setupLogoImageView()
+        setupLoginRegisterSegmentedControl()
         
         fbLoginButton.delegate = self
         fbLoginButton.readPermissions = ["email", "public_profile"]
        
     }
     
+    func setupLoginRegisterSegmentedControl() {
+         // x, y, width, height constraitns for login/register segments
+        loginRegisterSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginRegisterSegmentedControl.bottomAnchor.constraint(greaterThanOrEqualTo: inputsContainerView.topAnchor, constant: -12).isActive = true
+        loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        loginRegisterSegmentedControl.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        
+    }
+    
     func setupLogoImageView() {
         // x, y, width, height constraitns for logo image
         logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImage.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -12).isActive = true
+        logoImage.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
         logoImage.widthAnchor.constraint(equalToConstant: 138).isActive = true
         logoImage.heightAnchor.constraint(equalToConstant: 54).isActive = true
     }
+    
+    var inputsContainerViewHeightAnchor: NSLayoutConstraint?
     
     func setupInputsContainerView() {
         // x, y, width, height constraitns for input container
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true // 12 pixels left 12 right
-        inputsContainerView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        inputsContainerViewHeightAnchor?.isActive = true
         
         inputsContainerView.addSubview(nameTextField)
         inputsContainerView.addSubview(nameSeparatorView)

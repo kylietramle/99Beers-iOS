@@ -34,22 +34,42 @@ class LogInViewController: UIViewController, FBSDKLoginButtonDelegate{
         return button
     }()
     
+    // registration button functionality
     func handleRegister() {
-        // use guard statements for form validation
-        guard let email = emailTextField.text, let password = passwordTextField.text else {
+        guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {
             print("Form is not valid")
             return
         }
         
-        FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
+        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error) in
+            
             if error != nil {
-                print(error ?? "No error found")
+                print(error ?? "no error name")
                 return
             }
-        }
             
-            // successfully authenticated user
+            guard let uid = user?.uid else {
+                return
+            }
+            
+            //successfully authenticated user
+            let ref = FIRDatabase.database().reference(fromURL: "https://beers-11d0b.firebaseio.com/")
+            let usersReference = ref.child("users").child(uid) // child node in firebase
+            let values = ["name": name, "email": email]
+            usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                
+                if err != nil {
+                    print(err ?? "no error name")
+                    return
+                }
+                
+                print("Saved user successfully into Firebase db")
+                
+            })
+            
+        })
     }
+    
     
     let fbLoginButton: FBSDKLoginButton = {
         

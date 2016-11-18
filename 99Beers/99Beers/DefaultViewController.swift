@@ -14,10 +14,6 @@ class DefaultViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        var ref: FIRDatabaseReference!
-//        ref = FIRDatabase.database().reference()
-//        ref.updateChildValues(["someValue": 123])
-
         view.backgroundColor = UIColor(red: 255/255, green: 214/255, blue: 89/255, alpha: 1)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
